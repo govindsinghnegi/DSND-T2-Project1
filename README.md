@@ -24,6 +24,7 @@ The following conclusions were made:
 * Summer is the busiest season
 * Price varies with season, busy season implies high prices
 * Features, prices, reviews and location of an accommodation impacts its prices
+
 To read the article in details, please visit [medium.com](https://medium.com/@gsn.06081990/know-your-seattle-7b4d4d210370)
 
 ## License
