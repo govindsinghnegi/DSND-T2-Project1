@@ -13132,9 +13132,35 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Know-Your-Seattle---Analysis-of-Seattle-Airbnb-data">Know Your Seattle - Analysis of Seattle Airbnb data<a class="anchor-link" href="#Know-Your-Seattle---Analysis-of-Seattle-Airbnb-data">&#182;</a></h1><p>The goal of this project is to analyse Airbnb open source Seattle dataset <em><a href="https://www.kaggle.com/airbnb/seattle">https://www.kaggle.com/airbnb/seattle</a></em> and extract insights out of it using Cross Industry Standard Process for Data Mining or <strong><em>CRISP-DM</em></strong> methodology.</p>
+<p>CRISP-DM has following steps:</p>
+<ul>
+<li>Business Understanding</li>
+<li>Data Understanding</li>
+<li>Prepare Data</li>
+<li>Data Modeling</li>
+<li>Evaluation</li>
+</ul>
+<h2 id="Step1:-Business-Understanding">Step1: Business Understanding<a class="anchor-link" href="#Step1:-Business-Understanding">&#182;</a></h2><p>Any accommodation domain always involves two parties, an owner and a tenant/visitor.As a visitor/tenant we may have following questions in my mind:</p>
+<ul>
+<li>Which is the busiest season in Seattle ?</li>
+<li>Does the accommodation rate varies with the season ?</li>
+</ul>
+<p>As an owner, we may be considering:</p>
+<ul>
+<li>What are the parameters on which price of an accommodation depends ?</li>
+</ul>
+<p>So  in this project, we will try to cover both the perspective by answering the above questions.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[267]:</div>
+<div class="prompt input_prompt">In&nbsp;[211]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13156,15 +13182,21 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step2:-Data-Understanding">Step2: Data Understanding<a class="anchor-link" href="#Step2:-Data-Understanding">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[268]:</div>
+<div class="prompt input_prompt">In&nbsp;[212]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read calendar data</span>
 <span class="n">df_calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./calendar.csv&#39;</span><span class="p">)</span>
 <span class="n">df_calendar</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">df_calendar</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13177,7 +13209,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[268]:</div>
+    <div class="prompt output_prompt">Out[212]:</div>
 
 
 
@@ -13208,37 +13240,37 @@ div#notebook {
   </thead>
   <tbody>
     <tr>
-      <th>1393565</th>
-      <td>10208623</td>
-      <td>2016-12-29</td>
+      <th>0</th>
+      <td>241032</td>
+      <td>2016-01-04</td>
+      <td>t</td>
+      <td>$85.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>241032</td>
+      <td>2016-01-05</td>
+      <td>t</td>
+      <td>$85.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>241032</td>
+      <td>2016-01-06</td>
       <td>f</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>1393566</th>
-      <td>10208623</td>
-      <td>2016-12-30</td>
+      <th>3</th>
+      <td>241032</td>
+      <td>2016-01-07</td>
       <td>f</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>1393567</th>
-      <td>10208623</td>
-      <td>2016-12-31</td>
-      <td>f</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1393568</th>
-      <td>10208623</td>
-      <td>2017-01-01</td>
-      <td>f</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1393569</th>
-      <td>10208623</td>
-      <td>2017-01-02</td>
+      <th>4</th>
+      <td>241032</td>
+      <td>2016-01-08</td>
       <td>f</td>
       <td>NaN</td>
     </tr>
@@ -13255,7 +13287,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[269]:</div>
+<div class="prompt input_prompt">In&nbsp;[213]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># basic analysis</span>
@@ -13297,619 +13329,17 @@ dtype: object
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[270]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># check how many unique listings</span>
-<span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;listing_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[270]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>6752031     365
-7404370     365
-1259305     365
-4672934     365
-10310373    365
-479653      365
-3251069     365
-6400379     365
-8597800     365
-4841586     365
-7710713     365
-3155785     365
-6949900     365
-3646393     365
-3870253     365
-1252147     365
-9280767     365
-808134      365
-1737244     365
-7262358     365
-9910189     365
-5078244     365
-7178490     365
-7182584     365
-8463726     365
-8989807     365
-9497431     365
-3904056     365
-2277640     365
-6837338     365
-           ... 
-8518308     365
-8579782     365
-8409750     365
-1317919     365
-7506165     365
-9939025     365
-948077      365
-7096107     365
-9117633     365
-2406966     365
-8157486     365
-3657819     365
-8568567     365
-4130112     365
-6363779     365
-10309898    365
-5433597     365
-2809796     365
-8474294     365
-24212       365
-279063      365
-3975434     365
-6823837     365
-7627794     365
-8566475     365
-9999759     365
-9048029     365
-8441477     365
-7984550     365
-9484823     365
-Name: listing_id, Length: 3818, dtype: int64</pre>
-</div>
-
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>calendar</em></strong> dataset has four columns <em>Id, Date, Available &amp; Price</em>. Total number of listings/accommodations are 3818 and each of them includes availability info (true/false) for complete 365 days. The most expensive listing stands at <code>$1650</code> and least expensive is at <code>$10</code>. The average cost of listing is <code>$138</code> and the standard deviation is <code>$105</code> in Seattle.</p>
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[271]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove unwanted characters from price and convert it to numeric</span>
-<span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;[$,]&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[272]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[272]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>150.0    36646
-100.0    31755
-75.0     29820
-125.0    27538
-65.0     26415
-90.0     24942
-95.0     24327
-99.0     23629
-85.0     23455
-80.0     19817
-110.0    19454
-120.0    19145
-70.0     18439
-60.0     18004
-175.0    17707
-250.0    16870
-55.0     16864
-200.0    16144
-50.0     15978
-115.0    14775
-40.0     13357
-69.0     12922
-135.0    11455
-105.0    11062
-130.0    11008
-89.0     10355
-79.0     10133
-225.0     8163
-45.0      8134
-129.0     8111
-         ...  
-654.0        1
-652.0        1
-646.0        1
-643.0        1
-494.0        1
-603.0        1
-637.0        1
-636.0        1
-625.0        1
-624.0        1
-623.0        1
-668.0        1
-669.0        1
-674.0        1
-566.0        1
-554.0        1
-503.0        1
-716.0        1
-562.0        1
-616.0        1
-708.0        1
-567.0        1
-501.0        1
-693.0        1
-570.0        1
-686.0        1
-685.0        1
-683.0        1
-676.0        1
-711.0        1
-Name: price, Length: 669, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[273]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert string dates to date_time values</span>
-<span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[274]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[274]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>listing_id</th>
-      <th>date</th>
-      <th>available</th>
-      <th>price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>241032</td>
-      <td>2016-01-04</td>
-      <td>t</td>
-      <td>85.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>241032</td>
-      <td>2016-01-05</td>
-      <td>t</td>
-      <td>85.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>241032</td>
-      <td>2016-01-06</td>
-      <td>f</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>241032</td>
-      <td>2016-01-07</td>
-      <td>f</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>241032</td>
-      <td>2016-01-08</td>
-      <td>f</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[275]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># determine seasons, ref: https://www.timeanddate.com/calendar/aboutseasons.html</span>
-<span class="n">seasons</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span><span class="p">,</span>
-    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span>
-    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span>
-    <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span>
-    <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span>
-    <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span>
-    <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span>
-    <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;fall&#39;</span><span class="p">,</span>
-    <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;fall&#39;</span><span class="p">,</span>
-    <span class="mi">11</span><span class="p">:</span> <span class="s1">&#39;fall&#39;</span><span class="p">,</span>
-    <span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[276]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add season info in dataframe</span>
-<span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">seasons</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[277]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[277]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>summer    351256
-spring    351256
-fall      347438
-winter    343620
-Name: date_season, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[278]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[278]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>t    934542
-f    459028
-Name: available, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[279]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert boolean string to boolean int</span>
-<span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[280]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[280]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1    934542
-0    459028
-Name: available, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[281]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find availability per season, the lower the busier</span>
-<span class="n">availability_per_season</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">])[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[282]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">availability_per_season</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[282]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdd1b5f4b00&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[283]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find price per season, the more pricy means more demanding</span>
-<span class="n">price_per_season</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">])[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[284]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">price_per_season</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[284]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdd1b5e9390&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[285]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># start the EDA for listings</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[286]:</div>
+<div class="prompt input_prompt">In&nbsp;[214]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./listings.csv&#39;</span><span class="p">)</span>
@@ -13926,7 +13356,7 @@ Name: available, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[286]:</div>
+    <div class="prompt output_prompt">Out[214]:</div>
 
 
 
@@ -14107,11 +13537,10 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[287]:</div>
+<div class="prompt input_prompt">In&nbsp;[215]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># identify missing values of more than 75%</span>
-<span class="nb">set</span><span class="p">(</span><span class="n">df_listings</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_listings</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;review_scores_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14124,7 +13553,534 @@ Name: available, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[287]:</div>
+    <div class="prompt output_prompt">Out[215]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>count    3171.000000
+mean       94.539262
+std         6.606083
+min        20.000000
+25%        93.000000
+50%        96.000000
+75%        99.000000
+max       100.000000
+Name: review_scores_rating, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>listings</em></strong> dataset has a total of 92 columns storing all the info related to 3818 accommodations such as owner, features, location, neighborhood, reviews etc. The average current price is <code>$128</code>, average security deposit is <code>$288</code>, average cleaning fee is <code>$68</code>and average extra people cost is <code>$11</code> in Seattle. There are hosts as old as since 10 Nov 2008 to as new as 03 Jan 2016. Around 778 or 20% owners got <strong><em>super host</em></strong> rating. Overall, average rating for an owner in Seattle is 94 out of 100 which is quite good.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step3:-Prepare-Data">Step3: Prepare Data<a class="anchor-link" href="#Step3:-Prepare-Data">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[216]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">process_price</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts the price values that are string with special characters to numbers.&quot;&quot;&quot;</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;[$,]&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[217]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove unwanted characters from price and convert it to numeric</span>
+<span class="n">process_price</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[218]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[218]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    85.0
+1    85.0
+2     NaN
+3     NaN
+4     NaN
+Name: price, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[219]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[219]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>count    934542.000000
+mean        137.944859
+std         105.062870
+min          10.000000
+25%          75.000000
+50%         109.000000
+75%         160.000000
+max        1650.000000
+Name: price, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[220]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">process_date</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts the date that are string to date_time values.&quot;&quot;&quot;</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[221]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert string dates to date_time values</span>
+<span class="n">process_date</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[222]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[222]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>listing_id</th>
+      <th>date</th>
+      <th>available</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>241032</td>
+      <td>2016-01-04</td>
+      <td>t</td>
+      <td>85.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>241032</td>
+      <td>2016-01-05</td>
+      <td>t</td>
+      <td>85.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>241032</td>
+      <td>2016-01-06</td>
+      <td>f</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>241032</td>
+      <td>2016-01-07</td>
+      <td>f</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>241032</td>
+      <td>2016-01-08</td>
+      <td>f</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[223]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># determine seasons, ref: https://www.timeanddate.com/calendar/aboutseasons.html</span>
+<span class="n">seasons</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;fall&#39;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;fall&#39;</span><span class="p">,</span>
+    <span class="mi">11</span><span class="p">:</span> <span class="s1">&#39;fall&#39;</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[224]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add season info in dataframe</span>
+<span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">seasons</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[225]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[225]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>spring    351256
+summer    351256
+fall      347438
+winter    343620
+Name: date_season, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>NOTE:</em></strong> Here we see number of records in winter is less than summer. This difference has an impact in our final result.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[226]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[226]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>t    934542
+f    459028
+Name: available, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[227]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">process_boolean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts boolean true to 1 and boolean false to 0.&quot;&quot;&quot;</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[228]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert boolean string to boolean int</span>
+<span class="n">process_boolean</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">,</span> <span class="s1">&#39;available&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[229]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[229]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1    934542
+0    459028
+Name: available, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[230]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plots the data in dataframe as a bar graph.&quot;&quot;&quot;</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[231]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find availability per season, the lower the busier</span>
+<span class="n">availability_per_season</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">])[</span><span class="s1">&#39;available&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[232]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find price per season, more pricy means more demanding</span>
+<span class="n">price_per_season</span> <span class="o">=</span> <span class="n">df_calendar</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_calendar</span><span class="p">[</span><span class="s1">&#39;date_season&#39;</span><span class="p">])[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data-preprocessing-of-listings-dataset">Data preprocessing of listings dataset<a class="anchor-link" href="#Data-preprocessing-of-listings-dataset">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[233]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># identify missing values of more than 75%</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">df_listings</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_listings</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[233]:</div>
 
 
 
@@ -14139,9 +14095,17 @@ Name: available, dtype: int64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have chosen 95% as the threshold for missing count as such columns will not have any weightage in our prediction model</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[288]:</div>
+<div class="prompt input_prompt">In&nbsp;[234]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># delete the most missing values columns</span>
@@ -14155,7 +14119,7 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[289]:</div>
+<div class="prompt input_prompt">In&nbsp;[235]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">columns</span>
@@ -14171,7 +14135,7 @@ Name: available, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[289]:</div>
+    <div class="prompt output_prompt">Out[235]:</div>
 
 
 
@@ -14212,9 +14176,58 @@ Name: available, dtype: int64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following columns are decided as unimportant because they would not help in prediction modeling:</p>
+<ul>
+<li>unique &amp; random id's and url's etc. as strings</li>
+<li>string data such as notes, summary, description, neighborhood overview etc.</li>
+<li>redundant data such as city, state, country code etc.</li>
+<li>complex parameters such as neighborhood or amenities as they would complicate our model</li>
+<li>skewed data such as smart_location, has_availability etc.</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[290]:</div>
+<div class="prompt input_prompt">In&nbsp;[236]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;has_availability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[236]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>t    3818
+Name: has_availability, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[237]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># columns that would not help in our modeling</span>
@@ -14236,7 +14249,7 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[291]:</div>
+<div class="prompt input_prompt">In&nbsp;[238]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span> <span class="o">=</span> <span class="n">df_listings</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">unimportant_columns</span><span class="p">)</span>
@@ -14249,7 +14262,7 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[292]:</div>
+<div class="prompt input_prompt">In&nbsp;[239]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14265,7 +14278,7 @@ Name: available, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[292]:</div>
+    <div class="prompt output_prompt">Out[239]:</div>
 
 
 
@@ -14446,7 +14459,7 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[293]:</div>
+<div class="prompt input_prompt">In&nbsp;[240]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_listings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -14479,7 +14492,7 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[294]:</div>
+<div class="prompt input_prompt">In&nbsp;[241]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># identify price columns, they have special characters</span>
@@ -14493,12 +14506,12 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[295]:</div>
+<div class="prompt input_prompt">In&nbsp;[242]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove unwanted characters from price and convert it to numeric</span>
 <span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">price_columns</span><span class="p">:</span>
-    <span class="n">df_listings</span><span class="p">[</span><span class="n">price</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_listings</span><span class="p">[</span><span class="n">price</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;[$,]&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">process_price</span><span class="p">(</span><span class="n">df_listings</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14508,7 +14521,44 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[296]:</div>
+<div class="prompt input_prompt">In&nbsp;[243]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">price_columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;col: </span><span class="si">{}</span><span class="s1">, average: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">df_listings</span><span class="p">[</span><span class="n">price</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>col: price, average: 127.97616553169199
+col: weekly_price, average: 788.4818317570931
+col: monthly_price, average: 2613.336189848385
+col: security_deposit, average: 287.61039657020365
+col: cleaning_fee, average: 61.71090387374462
+col: extra_people, average: 10.667627029858565
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[244]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">boolean_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;host_is_superhost&#39;</span><span class="p">,</span> <span class="s1">&#39;host_has_profile_pic&#39;</span><span class="p">,</span> <span class="s1">&#39;host_identity_verified&#39;</span><span class="p">,</span> <span class="s1">&#39;is_location_exact&#39;</span><span class="p">,</span>
@@ -14522,7 +14572,42 @@ Name: available, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[297]:</div>
+<div class="prompt input_prompt">In&nbsp;[245]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_is_superhost&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[245]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>f    3038
+t     778
+Name: host_is_superhost, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[246]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;requires_license&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -14538,7 +14623,7 @@ Name: available, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[297]:</div>
+    <div class="prompt output_prompt">Out[246]:</div>
 
 
 
@@ -14556,7 +14641,7 @@ Name: requires_license, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[298]:</div>
+<div class="prompt input_prompt">In&nbsp;[247]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove column whose data is skewed</span>
@@ -14570,12 +14655,12 @@ Name: requires_license, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[299]:</div>
+<div class="prompt input_prompt">In&nbsp;[248]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert boolean string to boolean int</span>
 <span class="k">for</span> <span class="n">boolean_column</span> <span class="ow">in</span> <span class="n">boolean_columns</span><span class="p">:</span>
-    <span class="n">df_listings</span><span class="p">[</span><span class="n">boolean_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_listings</span><span class="p">[</span><span class="n">boolean_column</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+    <span class="n">process_boolean</span><span class="p">(</span><span class="n">df_listings</span><span class="p">,</span> <span class="n">boolean_column</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14585,7 +14670,7 @@ Name: requires_license, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[300]:</div>
+<div class="prompt input_prompt">In&nbsp;[249]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_acceptance_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -14601,7 +14686,7 @@ Name: requires_license, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[300]:</div>
+    <div class="prompt output_prompt">Out[249]:</div>
 
 
 
@@ -14620,7 +14705,7 @@ Name: host_acceptance_rate, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[301]:</div>
+<div class="prompt input_prompt">In&nbsp;[250]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove column whose data is skewed</span>
@@ -14634,11 +14719,27 @@ Name: host_acceptance_rate, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[302]:</div>
+<div class="prompt input_prompt">In&nbsp;[251]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">process_percentage</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts percentage values to numbers.&quot;&quot;&quot;</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[252]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove unwanted characters from percentage column and convert it to numeric</span>
-<span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_response_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_response_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">process_percentage</span><span class="p">(</span><span class="n">df_listings</span><span class="p">,</span> <span class="s1">&#39;host_response_rate&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14648,11 +14749,11 @@ Name: host_acceptance_rate, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[303]:</div>
+<div class="prompt input_prompt">In&nbsp;[253]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert string dates to date_time values</span>
-<span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">process_date</span><span class="p">(</span><span class="n">df_listings</span><span class="p">,</span> <span class="s1">&#39;host_since&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14662,7 +14763,46 @@ Name: host_acceptance_rate, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[304]:</div>
+<div class="prompt input_prompt">In&nbsp;[254]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[254]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>count                    3816
+unique                   1380
+top       2013-08-30 00:00:00
+freq                       51
+first     2008-11-10 00:00:00
+last      2016-01-03 00:00:00
+Name: host_since, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[255]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
@@ -14678,7 +14818,7 @@ Name: host_acceptance_rate, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[304]:</div>
+    <div class="prompt output_prompt">Out[255]:</div>
 
 
 
@@ -14700,7 +14840,23 @@ Name: host_since, dtype: datetime64[ns]</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[305]:</div>
+<div class="prompt input_prompt">In&nbsp;[256]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convert_date_to_number</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">first_day</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts date to number of days since first day.&quot;&quot;&quot;</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">date</span><span class="p">:</span> <span class="p">(</span><span class="n">first_day</span> <span class="o">-</span> <span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[257]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find first day of the data, then host_since (in days) = (first_day - host_since).days</span>
@@ -14733,11 +14889,11 @@ Name: host_since, dtype: datetime64[ns]</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[306]:</div>
+<div class="prompt input_prompt">In&nbsp;[258]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert date_time values to number of days numeric</span>
-<span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">date</span><span class="p">:</span> <span class="p">(</span><span class="n">first_day</span> <span class="o">-</span> <span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+<span class="n">convert_date_to_number</span><span class="p">(</span><span class="n">df_listings</span><span class="p">,</span> <span class="s1">&#39;host_since&#39;</span><span class="p">,</span> <span class="n">first_day</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14747,7 +14903,7 @@ Name: host_since, dtype: datetime64[ns]</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[307]:</div>
+<div class="prompt input_prompt">In&nbsp;[259]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;host_since&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
@@ -14763,7 +14919,7 @@ Name: host_since, dtype: datetime64[ns]</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[307]:</div>
+    <div class="prompt output_prompt">Out[259]:</div>
 
 
 
@@ -14785,7 +14941,7 @@ Name: host_since, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[308]:</div>
+<div class="prompt input_prompt">In&nbsp;[260]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">columns</span>
@@ -14801,7 +14957,7 @@ Name: host_since, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[308]:</div>
+    <div class="prompt output_prompt">Out[260]:</div>
 
 
 
@@ -14830,9 +14986,17 @@ Name: host_since, dtype: float64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Drop any row that does not have a value for response column <strong><em>price</em></strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[309]:</div>
+<div class="prompt input_prompt">In&nbsp;[261]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># drop any row where price is NAN</span>
@@ -14846,7 +15010,7 @@ Name: host_since, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[310]:</div>
+<div class="prompt input_prompt">In&nbsp;[262]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># identify numeric columns</span>
@@ -14864,7 +15028,7 @@ Name: host_since, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[310]:</div>
+    <div class="prompt output_prompt">Out[262]:</div>
 
 
 
@@ -14892,9 +15056,17 @@ Name: host_since, dtype: float64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These numeric columns are important for our prediction. As sklearn's fit() method does not work with NANs, we have to impute the NANs. As these are numbers, mean of the colums is appropriate for imputing NANs.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[311]:</div>
+<div class="prompt input_prompt">In&nbsp;[263]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fill missing numeric column with mean of the column</span>
@@ -14909,7 +15081,7 @@ Name: host_since, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[312]:</div>
+<div class="prompt input_prompt">In&nbsp;[264]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14925,7 +15097,7 @@ Name: host_since, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[312]:</div>
+    <div class="prompt output_prompt">Out[264]:</div>
 
 
 
@@ -15106,7 +15278,7 @@ Name: host_since, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[313]:</div>
+<div class="prompt input_prompt">In&nbsp;[265]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># identify categorical columns</span>
@@ -15124,7 +15296,7 @@ Name: host_since, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[313]:</div>
+    <div class="prompt output_prompt">Out[265]:</div>
 
 
 
@@ -15141,9 +15313,17 @@ Name: host_since, dtype: float64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As categorical values are important for our modeling step, instead of dropping we will encode them with 1's and 0's. One advantage of this is with linear modeling, it's easy to interpret weights on these categorical values. Also, since the number of new dummy-columns created is far less than the number of rows, thus, we are safe from its scalability issues. We must also be aware that NANs in these columns would be encoded with 0 and this may impact our result.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[314]:</div>
+<div class="prompt input_prompt">In&nbsp;[266]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fill missing categorical columns with dummy data</span>
@@ -15158,7 +15338,7 @@ Name: host_since, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[315]:</div>
+<div class="prompt input_prompt">In&nbsp;[267]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15174,7 +15354,7 @@ Name: host_since, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[315]:</div>
+    <div class="prompt output_prompt">Out[267]:</div>
 
 
 
@@ -15353,9 +15533,16 @@ Name: host_since, dtype: float64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step4:-Data-Modeling">Step4: Data Modeling<a class="anchor-link" href="#Step4:-Data-Modeling">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[316]:</div>
+<div class="prompt input_prompt">In&nbsp;[268]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df_listings</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
@@ -15371,11 +15558,10 @@ Name: host_since, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[317]:</div>
+<div class="prompt input_prompt">In&nbsp;[269]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data modeling</span>
-<span class="c1">#split the data into train and test</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#split the data into train and test</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training sample: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testing sample: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
@@ -15393,9 +15579,7 @@ Name: host_since, dtype: float64</pre>
 <span class="n">test_score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_preds</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test_score: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test_score</span><span class="p">))</span>
 
-<span class="c1">#plotting</span>
 <span class="n">feature_importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rf_model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_listings</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="n">feature_importances</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15414,24 +15598,38 @@ Name: host_since, dtype: float64</pre>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training sample: 2672
 Testing sample: 1146
-train_score: 0.9244719805544821
-test_score: 0.6415842597081213
+train_score: 0.9251969660428926
+test_score: 0.6700559978786749
 </pre>
 </div>
 </div>
 
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[317]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdd0c17b0f0&gt;</pre>
+</div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step5:-Evaluation">Step5: Evaluation<a class="anchor-link" href="#Step5:-Evaluation">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[270]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_data</span><span class="p">(</span><span class="n">availability_per_season</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
 
 <div class="output_area">
 
@@ -15441,7 +15639,7 @@ test_score: 0.6415842597081213
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -15451,6 +15649,112 @@ test_score: 0.6415842597081213
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plot above answers our first question. Summer shows a low count as most of the tourists prefer this season 
+leading to low availability. Surprisingly, winter was the lowest, but this can also be attributed to the reason that 
+number of days during in winter (90) in this dataset were lesser than the number of days in summer (92). 
+Thus, considering the case of equal number of days, <strong><em>we can conclude that the Summer is the busiest season</em></strong>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[271]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_data</span><span class="p">(</span><span class="n">price_per_season</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plot above answers our second question. We can clearly conclude that <strong><em>price does vary as per the season</em></strong> and 
+busy season (as summer) means high prices too.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[272]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_data</span><span class="p">(</span><span class="n">feature_importances</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plot above answers our third question. Clearly, <strong>*number of bedrooms</strong> came out to be most important parameter followed by <strong><em>weekly_price</em></strong>. We can classify top 10 features into general categories such as features, prices, reviews and location.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Discussion:</em></strong> I have tried to show here a simple procedure to do analysis on Airbnb Seattle dataset. There is still a lot of areas where we could improve such as including complex features in our prediction such as amenities and neighborhood or using better linear model. But to keep this project short and simple, we have ignored them from our analysis.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
